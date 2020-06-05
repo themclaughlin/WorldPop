@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="C:/Users/mclau/OneDrive/Coding/sql-population-queries-part-ii-starting/db.sqlite" foreign_keys="1" case_sensitive_like="0" temp_store="0" wal_autocheckpoint="1000" synchronous="2"/><attached/><window><current_tab id="3"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="100"/><column_width id="3" width="1047"/><column_width id="4" width="0"/><expanded_item id="0" parent="1"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><current_table name="countries"/><default_encoding codec=""/><browse_table_settings><table schema="main" name="countries" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk=""><sort/><column_widths/><filter_values/><display_formats/><hidden_columns/><plot_y_axes/></table></browse_table_settings></tab_browse><tab_sql><sql name="SQL 3">SELECT count(*)
+FROM countries
+WHERE continent = 'Africa';
+</sql><sql name="SQL 4">SELECT SUM(population)
+FROM population_years
+JOIN countries	
+	ON countries.id = population_years.country_id
+WHERE continent = 'Oceania'
+	AND year = 2005;
+
+</sql><sql name="SQL 5">SELECT AVG(population_years.population)
+FROM population_years
+JOIN countries
+	ON countries.id = population_years.country_id
+WHERE continent = 'South America'
+	AND year = 2003;</sql><sql name="SQL 6">SELECT countries.name, min(population_years.population)
+FROM population_years
+JOIN countries
+	ON countries.id = population_years.country_id
+WHERE year = 2007;
+</sql><sql name="SQL 7">SELECT countries.name, avg(population_years.population)
+FROM population_years
+JOIN countries
+	ON countries.id = population_years.country_id
+WHERE countries.name = 'Poland';
+</sql><sql name="SQL 8">SELECT count(countries.name)
+FROM countries
+WHERE countries.name like '%The%';</sql><sql name="SQL 9">SELECT countries.continent, sum(population_years.population)
+FROM population_years
+JOIN countries
+	ON countries.id = population_years.country_id
+WHERE year = 2010
+GROUP BY countries.continent
+ORDER BY sum(population_years.population) DESC;</sql><current_tab id="6"/></tab_sql></sqlb_project>
